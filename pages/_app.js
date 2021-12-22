@@ -49,6 +49,33 @@ export default function Page() {
       return videoLoaded
     }
 
+    async function fadeInOut(element) {
+      var opacity = 1;
+      var delta = -0.02;
+      function changeOpacity () {
+        opacity += delta;
+        if (opacity <= 0 || opacity >= 1) {
+          delta = -delta;
+        }
+        element.style.opacity = opacity;
+        requestAnimationFrame(changeOpacity);
+      }
+      changeOpacity();
+    }
+
+    // async function moveBall() {
+    //   let start = Date.now();
+    //   let image = document.querySelector(".image")
+    //   // timestamp: time elapsed in milliseconds since the web page was loaded
+    //   let timer = requestAnimationFrame(function animateBall(timestamp) {
+    //       let interval = Date.now() - start;
+    //       image.style.opacity' = interval / 3 + 'px'; // move element down
+    //       if (interval < 1000) requestAnimationFrame(animateBall); // queue request for next frame
+    //   });
+    // }
+
+    const image = document.querySelector(".image")
+    fadeInOut(image)
     load()
   }, [])
 
