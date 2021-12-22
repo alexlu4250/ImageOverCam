@@ -24,7 +24,7 @@ export default function Page() {
         const stream = await navigator.mediaDevices.getUserMedia({
           audio: false,
           video: {
-            facingMode: 'user',
+            facingMode: 'environment',
             width: maxVideoWidth,
             height: maxVideoHeight,
           },
