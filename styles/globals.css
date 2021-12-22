@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Open+Sans:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', 'Lato', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Lato', sans-serif;
+}
+
+.video-wrapper {
+  perspective: 1000px;
+  position: relative;
+}
+
+
+video {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  width: 100%;
+  height: auto;
+  position: absolute;
+}
+
+.image {
+  position:absolute;
+  width: 100%;
+  height: auto;
+  /* transition: .5s ease; */
+  z-index:30000;
+  opacity:0.4;
+}
