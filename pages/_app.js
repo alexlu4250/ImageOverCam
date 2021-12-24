@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import '../styles/globals.css'
 import Image from 'next/image'
@@ -7,6 +7,30 @@ const maxVideoWidth = 800
 const maxVideoHeight = 600
 
 export default function Page() {
+  const [imageSrc, setImageSrc] = useState();
+
+  /**
+   * OnChange
+   * @description Trigger when the file input changes (e.g., when a file is selected)
+   */
+   function OnChange(changeEvent) {
+    const reader = new FileReader();
+
+    reader.onload = function(onLoadEvent) {
+      setImageSrc(onLoadEvent.target.result);
+    }
+
+    reader.readAsDataURL(changeEvent.target.files[0]);
+  }
+
+  //  /**
+  //  * OnSubmit
+  //  * @description Trigger when the main form is submitted
+  //  */
+  //    async function OnSubmit(event) {
+  //     event.preventDefault();
+  //   }
+
   const videoElement = useRef(null)
   
   /**
@@ -51,7 +75,7 @@ export default function Page() {
 
     async function fadeInOut(element) {
       var opacity = 1;
-      var delta = -0.01;
+      var delta = -0.02;
       function changeOpacity () {
         opacity += delta;
         if (opacity <= 0 || opacity >= 1) {
@@ -78,6 +102,7 @@ export default function Page() {
     fadeInOut(image)
     load()
   }, [])
+  let imgSrc = imageSrc ?? "/Avatar.jpg";
 
   /**
    * What we're going to render is:
@@ -96,8 +121,13 @@ export default function Page() {
     >
       <div className="video-wrapper">
         <video className="video" playsInline ref={videoElement} />
-        <Image src="/Avatar.jpg" alt="Avatar" className="image" width={maxVideoWidth} height={maxVideoHeight}></Image>
+        <Image src={imgSrc} alt="Avatar" className="image" width={maxVideoWidth} height={maxVideoHeight}></Image>
       </div>
+      <form method="post" onChange={OnChange} /*onSubmit={OnSubmit}*/>
+          <p>
+            <input type="file" name="file" />
+          </p>
+        </form>
     </div>
   )
 }
