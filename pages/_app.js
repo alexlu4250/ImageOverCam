@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from 'react'
 import '../styles/globals.css'
 import Image from 'next/image'
 
-const maxVideoWidth = 800
-const maxVideoHeight = 600
+const maxVideoWidth = 1600
+const maxVideoHeight = 1200
 
 export default function Page() {
   const [imageSrc, setImageSrc] = useState();
