@@ -75,7 +75,7 @@ export default function Page() {
 
     async function fadeInOut(element) {
       var opacity = 1;
-      var delta = -0.02;
+      var delta = -0.05;
       function changeOpacity () {
         opacity += delta;
         if (opacity <= 0 || opacity >= 1) {
